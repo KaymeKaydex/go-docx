@@ -140,5 +140,6 @@ func (d *DOCX) rmUnarchivedFolder() error {
 }
 
 func (d *DOCX) Close() error {
+	d.unzipped = false
 	return d.rmUnarchivedFolder()
 }
