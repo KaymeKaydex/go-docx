@@ -8,3 +8,4 @@ Future:
 - [ ] parse rels/
 - [ ] parse word/
 - [ ] work with file structure with all dependencies
+- [ ] add CI
