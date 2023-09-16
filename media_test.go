@@ -14,6 +14,7 @@ func TestDOCX_GetMediaFilesName(t *testing.T) {
 	media, err := file.GetMediaFilesName()
 	require.NoError(t, err)
 	require.NotNil(t, media)
+	file.Close()
 }
 
 func TestDOCX_GetMediaFilesName2(t *testing.T) {
