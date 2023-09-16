@@ -71,7 +71,7 @@ func (d *DOCX) rmArchive() error {
 }
 
 func (d *DOCX) unzip() error {
-	archive, err := zip.OpenReader(fmt.Sprintf("tmp/%s.zip", d.uuid))
+	archive, err := zip.OpenReader(fmt.Sprintf("%s/%s.zip", d.tmpDir, d.uuid))
 	if err != nil {
 		return err
 	}
