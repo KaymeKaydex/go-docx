@@ -1,6 +1,9 @@
 package go_docx
 
 import (
+	"encoding/xml"
+	"fmt"
+	"os"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -25,6 +28,16 @@ func TestDOCX_GetContentWordDocumentXML(t *testing.T) {
 	doc, err := file.GetWordDocumentXML()
 	require.NoError(t, err)
 	require.NotNil(t, doc)
+
+	bts, err := xml.Marshal(doc)
+	require.NoError(t, err)
+	require.NotEmpty(t, bts)
+
+	btsReal, err := os.ReadFile(fmt.Sprintf("tmp/%s/word/document.xml", file.uuid))
+	require.NoError(t, err)
+
+	require.Equal(t, string(btsReal), string(bts))
+
 	file.Close()
 }
 
