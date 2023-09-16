@@ -9,3 +9,4 @@ Future:
 - [ ] parse word/
 - [ ] work with file structure with all dependencies
 - [ ] add CI
+- [ ] ok marshal equal to original files 
