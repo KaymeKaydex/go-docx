@@ -23,6 +23,25 @@ func New() *DOCX {
 	}
 }
 
+type Orientation int
+
+const (
+	OrientationVertical Orientation = iota
+	OrientationHorizontal
+)
+
+func (d *DOCX) GetOrientation() (Orientation, error) {
+	docInfo, err := d.GetWordDocumentXML()
+	if err != nil {
+		return 0, err
+	}
+	if docInfo.Body.Section.PgSz.Height > docInfo.Body.Section.PgSz.Width {
+		return OrientationVertical, nil
+	}
+
+	return OrientationHorizontal, nil
+}
+
 // Full Word File
 
 type WordStructure struct {

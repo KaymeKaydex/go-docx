@@ -27,3 +27,21 @@ func TestDOCX_GetContentWordDocumentXML(t *testing.T) {
 	require.NotNil(t, doc)
 	file.Close()
 }
+
+func TestDOCX_GetOrientation(t *testing.T) {
+	file, err := New().FromFile("testdata/test2.docx")
+	require.NotNil(t, file)
+	require.NoError(t, err)
+	orientation, err := file.GetOrientation()
+	require.NoError(t, err)
+	require.Equal(t, orientation, OrientationVertical)
+	file.Close()
+
+	file, err = New().FromFile("testdata/test3.docx")
+	require.NotNil(t, file)
+	require.NoError(t, err)
+	orientation, err = file.GetOrientation()
+	require.NoError(t, err)
+	require.Equal(t, orientation, OrientationHorizontal)
+	file.Close()
+}
